@@ -67,12 +67,25 @@ export default {
   },
   mounted: function() {
     const that = this;
+
+    const timeout = setTimeout(() => {
+      that.currentLocation.lat = 46.0569;
+      that.currentLocation.lng = 14.5058;
+
+      that.loadLocationStreams();
+    },5000);
+
     navigator.geolocation.getCurrentPosition(function(position) {
+
+      clearTimeout(timeout);
+      
       that.currentLocation.lat = position.coords.latitude;
       that.currentLocation.lng = position.coords.longitude;
 
       that.loadLocationStreams();
     });
+    
+
 
     this.style.height = `${window.innerHeight - 60}px`;
     this.style.width = `${window.innerWidth}px`;
