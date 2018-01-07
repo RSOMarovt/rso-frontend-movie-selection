@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: index.docker.io/banomaster/rso-frontend-movie-selection:latest
+        name: frontend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: server
+          protocol: TCP
