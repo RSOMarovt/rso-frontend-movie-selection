@@ -2,16 +2,16 @@
   <div class="container">
     <form class="container-form">
         <h2>Add new stream</h2>
-        <div class="container-message-input">
+        <div class="form-input">
             <input class="message-input" v-model="formData.title" placeholder="Video title"></input>
         </div>
-        <div class="container-message-input">
+        <div class="form-input">
             <input class="message-input" v-model="formData.url" placeholder="Video url"></input>
         </div>
-        <div class="container-message-input">
+        <div class="form-input">
             <input class="message-input" v-model="formData.lat" placeholder="Location latitude"></input>
         </div>
-        <div class="container-message-input">
+        <div class="form-input">
             <input class="message-input" v-model="formData.lng" placeholder="Location longitude"></input>
         </div>
         <div class="button" @click="submitForm">
@@ -52,7 +52,7 @@ export default {
   methods: {
     submitForm: function() {
       console.log('wat', config);
-      axios.post(`${config.locationServiceUrl}/streams`, this.formData)
+      axios.post(`${config.locationServiceUrl}/streamsNoBreaker`, this.formData)
       .then((res) => {
         this.$router.push({path: `/${res.data.stream_id}`});
       }).catch(err => {
@@ -84,7 +84,7 @@ export default {
   position: relative;
 }
 
-.container-message-input {
+.form-input {
   background: white;
   align-self: flex-end;
   padding: 10px;

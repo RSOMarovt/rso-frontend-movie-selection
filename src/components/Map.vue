@@ -94,7 +94,7 @@ export default {
       loadLocationStreams: function() {
         if (this.currentLocation.lat != 0 && this.currentLocation.lng != 0) {
           console.log(config);
-          axios.get(`${config.locationServiceUrl}/streams?lat=${this.currentLocation.lat}&lng=${this.currentLocation.lng}`).then(res => {
+          axios.get(`${config.locationServiceUrl}/streamsNoBreaker?lat=${this.currentLocation.lat}&lng=${this.currentLocation.lng}`).then(res => {
             this.markers = res.data.map(el => {
               return {
                 position: {
